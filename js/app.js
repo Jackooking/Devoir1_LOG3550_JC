@@ -1,4 +1,25 @@
-let livres = [...LIVRES_DEPART];
+const CLE_STOCKAGE = "bibliotheque-livres";
+
+let livres = chargerLivres();
+
+function chargerLivres() {
+  const sauvegarde = localStorage.getItem(CLE_STOCKAGE);
+
+  if (sauvegarde === null) {
+    return [...LIVRES_DEPART];
+  }
+  return JSON.parse(sauvegarde);
+}
+
+function sauvegarderLivres() {
+  localStorage.setItem(CLE_STOCKAGE, JSON.stringify(livres));
+}
+
+function reinitialiserLivres() {
+    livres = [...LIVRES_DEPART];
+  sauvegarderLivres();
+  actualiserAffichage();
+}
 
 function creerCarteLivre(livre) {
   const carte = document.createElement("article");
@@ -87,6 +108,7 @@ function supprimerLivre(id) {
   livres = livres.filter(function (livre) {
     return livre.id !== id;
   });
+    sauvegarderLivres();
     actualiserAffichage();
 }
  
@@ -146,6 +168,7 @@ function ajouterLivre(evenement) {
   }
   livres.push(lireFormulaire());
   evenement.target.reset();
+  sauvegarderLivres();
   actualiserAffichage();
 }
 function actualiserAffichage() {
@@ -159,5 +182,7 @@ document.querySelector("#filtre-categorie").addEventListener("change", actualise
 document.querySelector("#filtre-disponibles").addEventListener("change", actualiserAffichage);
 document.querySelector("#tri").addEventListener("change", actualiserAffichage);
 document.querySelector("#formulaire-livre").addEventListener("submit", ajouterLivre);
+document.querySelector("#bouton-reinitialiser").addEventListener("click", reinitialiserLivres);
 
+sauvegarderLivres();
 actualiserAffichage();
