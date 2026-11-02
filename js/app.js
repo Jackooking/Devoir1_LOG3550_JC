@@ -35,4 +35,26 @@ function afficherLivres(livres) {
   });
 }
 
-afficherLivres(LIVRES_DEPART);
+// Enlève les accents et les majuscules pour comparer les textes
+function normaliser(texte) {
+  return texte.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+function filtrerLivres(livres) {
+  const recherche = normaliser(document.querySelector("#recherche").value);
+
+  return livres.filter(function (livre) {
+    const trouveDansTitre = normaliser(livre.titre).includes(recherche);
+    const trouveDansAuteur = normaliser(livre.auteur).includes(recherche);
+    return trouveDansTitre || trouveDansAuteur;
+  });
+}
+
+function actualiserAffichage() {
+  const resultats = filtrerLivres(LIVRES_DEPART);
+  afficherLivres(resultats);
+}
+
+document.querySelector("#recherche").addEventListener("input", actualiserAffichage);
+
+actualiserAffichage();
