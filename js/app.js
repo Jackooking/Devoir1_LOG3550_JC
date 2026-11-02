@@ -1,3 +1,5 @@
+let livres = [...LIVRES_DEPART];
+
 function creerCarteLivre(livre) {
   const carte = document.createElement("article");
 
@@ -21,8 +23,13 @@ function creerCarteLivre(livre) {
     etat.textContent = "Emprunté";
     etat.classList.add("etiquette-empruntee");
   }
-
-  carte.append(titre, auteur, annee, categorie, etat);
+  const boutonSupprimer = document.createElement("button");
+  boutonSupprimer.type = "button";
+  boutonSupprimer.textContent = "Supprimer";
+  boutonSupprimer.addEventListener("click", function () {
+        supprimerLivre(livre.id);
+  });
+  carte.append(titre, auteur, annee, categorie, etat, boutonSupprimer);
   return carte;
 }
 
@@ -72,8 +79,18 @@ function afficherResultats(nombre) {
   compteur.textContent = nombre + " résultat(s)";
   messageVide.hidden = nombre > 0;
 }
+function supprimerLivre(id) {
+  if (!confirm("Voulez-vous vraiment supprimer ce livre ?")) {
+    return;
+  }
+
+  livres = livres.filter(function (livre) {
+    return livre.id !== id;
+  });
+  actualiserAffichage();
+}
 function actualiserAffichage() {
-  const resultats = trierLivres(filtrerLivres(LIVRES_DEPART));
+  const resultats = trierLivres(filtrerLivres(livres));
   afficherLivres(resultats);
   afficherResultats(resultats.length);
 }
