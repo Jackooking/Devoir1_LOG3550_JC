@@ -52,14 +52,35 @@ function filtrerLivres(livres) {
     return (trouveDansTitre || trouveDansAuteur) && correspondACategorie && estDisponible;
   });
 }
+function trierLivres(livres) {
+  const tri = document.querySelector("#tri").value;
+  const copie = [...livres];
 
+  copie.sort(function (a, b) {
+    if (tri === "titre-asc") return a.titre.localeCompare(b.titre, "fr");
+    if (tri === "titre-desc") return b.titre.localeCompare(a.titre, "fr");
+    if (tri === "annee-asc") return a.annee - b.annee;
+    return b.annee - a.annee;
+  });
+
+  return copie;
+}
+function afficherResultats(nombre) {
+  const compteur = document.querySelector("#nombre-resultats");
+  const messageVide = document.querySelector("#message-vide");
+
+  compteur.textContent = nombre + " résultat(s)";
+  messageVide.hidden = nombre > 0;
+}
 function actualiserAffichage() {
-  const resultats = filtrerLivres(LIVRES_DEPART);
+  const resultats = trierLivres(filtrerLivres(LIVRES_DEPART));
   afficherLivres(resultats);
+  afficherResultats(resultats.length);
 }
 
 document.querySelector("#recherche").addEventListener("input", actualiserAffichage);
 document.querySelector("#filtre-categorie").addEventListener("change", actualiserAffichage);
 document.querySelector("#filtre-disponibles").addEventListener("change", actualiserAffichage);
+document.querySelector("#tri").addEventListener("change", actualiserAffichage);
 
 actualiserAffichage();
