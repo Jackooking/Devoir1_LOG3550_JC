@@ -20,7 +20,7 @@ const LIVRES_DEPART = [
     titre: "Une tempête",
     auteur: "Aimé Césaire",
     annee: 1969,
-    categorie: "histoire",
+    categorie: "autre",
     disponible: true
   },
   {

@@ -13,10 +13,16 @@ function creerCarteLivre(livre) {
   const categorie = document.createElement("p");
   categorie.textContent = "Catégorie : " + livre.categorie;
 
-  const disponible = document.createElement("p");
-  disponible.textContent = "Disponible : " + (livre.disponible ? "Oui" : "Non");
+    const etat = document.createElement("span");
+  if (livre.disponible) {
+    etat.textContent = "Disponible";
+    etat.classList.add("etiquette-disponible");
+  } else {
+    etat.textContent = "Emprunté";
+    etat.classList.add("etiquette-empruntee");
+  }
 
-  carte.append(titre, auteur, annee, categorie, disponible);
+  carte.append(titre, auteur, annee, categorie, etat);
   return carte;
 }
 
