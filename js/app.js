@@ -87,6 +87,31 @@ function supprimerLivre(id) {
   livres = livres.filter(function (livre) {
     return livre.id !== id;
   });
+    actualiserAffichage();
+}
+ 
+  function genererId() {
+  const ids = livres.map(function (livre) {
+    return livre.id;
+  });
+  return Math.max(0, ...ids) + 1;
+}
+
+function lireFormulaire() {
+  return {
+    id: genererId(),
+    titre: document.querySelector("#titre").value.trim(),
+    auteur: document.querySelector("#auteur").value.trim(),
+    annee: Number(document.querySelector("#annee").value),
+    categorie: document.querySelector("#categorie").value,
+    disponible: document.querySelector("#disponible").checked
+  };
+}
+
+function ajouterLivre(evenement) {
+  evenement.preventDefault();
+  livres.push(lireFormulaire());
+  evenement.target.reset();
   actualiserAffichage();
 }
 function actualiserAffichage() {
@@ -99,5 +124,6 @@ document.querySelector("#recherche").addEventListener("input", actualiserAfficha
 document.querySelector("#filtre-categorie").addEventListener("change", actualiserAffichage);
 document.querySelector("#filtre-disponibles").addEventListener("change", actualiserAffichage);
 document.querySelector("#tri").addEventListener("change", actualiserAffichage);
+document.querySelector("#formulaire-livre").addEventListener("submit", ajouterLivre);
 
 actualiserAffichage();
