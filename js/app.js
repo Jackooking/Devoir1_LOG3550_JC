@@ -175,6 +175,8 @@ function actualiserAffichage() {
   const resultats = trierLivres(filtrerLivres(livres));
   afficherLivres(resultats);
   afficherResultats(resultats.length);
+    document.querySelector("#bouton-reinitialiser").disabled =
+    JSON.stringify(livres) === JSON.stringify(LIVRES_DEPART);
 }
 
 document.querySelector("#recherche").addEventListener("input", actualiserAffichage);
@@ -184,5 +186,4 @@ document.querySelector("#tri").addEventListener("change", actualiserAffichage);
 document.querySelector("#formulaire-livre").addEventListener("submit", ajouterLivre);
 document.querySelector("#bouton-reinitialiser").addEventListener("click", reinitialiserLivres);
 
-sauvegarderLivres();
 actualiserAffichage();

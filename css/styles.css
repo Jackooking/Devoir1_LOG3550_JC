@@ -3,7 +3,7 @@
   --couleur-fond: #f7f5f0;
   --couleur-carte: #ffffff;
   --couleur-texte: #222222;
-  --couleur-principale: #787e80;
+  --couleur-principale: #5f6568;
   --couleur-disponible: #072e16;
   --couleur-empruntee: #5c1a1a;
   --espace-petit: 0.5rem;
@@ -64,4 +64,69 @@ main {
   #liste-livres {
     grid-template-columns: repeat(3, 1fr);
   }
+  /* Étiquettes de disponibilité */
+.etiquette-disponible,
+.etiquette-empruntee {
+  display: inline-block;
+  padding: 0.1rem var(--espace-petit);
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.etiquette-disponible {
+  background: var(--couleur-disponible);
+}
+
+.etiquette-empruntee {
+  background: var(--couleur-empruntee);
+}
+
+/* Boutons et leurs états */
+button {
+  margin-top: var(--espace-petit);
+  padding: var(--espace-petit) var(--espace-moyen);
+  border: none;
+  border-radius: 4px;
+  background: var(--couleur-principale);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--couleur-texte);
+}
+
+button:disabled {
+  background: #cccccc;
+  color: #555555;
+  cursor: not-allowed;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--couleur-principale);
+  outline-offset: 2px;
+}
+
+#liste-livres article:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Formulaire et contrôles */
+form div,
+#catalogue > div:not(#liste-livres) {
+  margin-bottom: var(--espace-moyen);
+}
+
+label {
+  display: inline-block;
+  margin-right: var(--espace-petit);
+}
+
+.erreur {
+  margin: 0.25rem 0 0;
+  color: var(--couleur-empruntee);
+}
 }
