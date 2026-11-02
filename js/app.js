@@ -107,9 +107,43 @@ function lireFormulaire() {
     disponible: document.querySelector("#disponible").checked
   };
 }
+function afficherErreur(champ, message) {
+  document.querySelector("#erreur-" + champ).textContent = message;
+}
+
+function validerFormulaire() {
+  const livre = lireFormulaire();
+  const anneeMax = new Date().getFullYear();
+  const erreurs = { titre: "", auteur: "", annee: "", categorie: "" };
+
+  if (livre.titre.length < 2) {
+    erreurs.titre = "Le titre doit contenir au moins 2 caractères.";
+  }
+   if (livre.auteur.length < 2) {
+    erreurs.auteur = "L'auteur doit contenir au moins 2 caractères.";
+  }
+  if (livre.annee < 1450 || livre.annee > anneeMax) {
+    erreurs.annee = "L'année doit être entre 1450 et " + anneeMax + ".";
+  }
+  
+  if (!livre.categorie) {
+    erreurs.categorie = "Veuillez choisir une catégorie.";
+  }
+
+  Object.keys(erreurs).forEach(function (champ) {
+    afficherErreur(champ, erreurs[champ]);
+  });
+
+  return Object.values(erreurs).every(function (message) {
+    return message === "";
+  });
+}
 
 function ajouterLivre(evenement) {
   evenement.preventDefault();
+    if (!validerFormulaire()) {
+    return;
+  }
   livres.push(lireFormulaire());
   evenement.target.reset();
   actualiserAffichage();
