@@ -1,0 +1,67 @@
+/* Couleurs et espacements réutilisés partout */
+:root {
+  --couleur-fond: #f7f5f0;
+  --couleur-carte: #ffffff;
+  --couleur-texte: #222222;
+  --couleur-principale: #787e80;
+  --couleur-disponible: #072e16;
+  --couleur-empruntee: #5c1a1a;
+  --espace-petit: 0.5rem;
+  --espace-moyen: 1rem;
+  --espace-grand: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--couleur-fond);
+  color: var(--couleur-texte);
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+header,
+footer {
+  background: var(--couleur-principale);
+  color: #ffffff;
+  padding: var(--espace-moyen);
+}
+
+header a {
+  color: #ffffff;
+}
+
+main {
+  padding: var(--espace-moyen);
+}
+
+/* Mobile d'abord : une seule colonne */
+#liste-livres {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--espace-moyen);
+}
+
+#liste-livres article {
+  background: var(--couleur-carte);
+  padding: var(--espace-moyen);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Tablette : deux colonnes */
+@media (min-width: 600px) {
+  #liste-livres {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Ordinateur : trois colonnes */
+@media (min-width: 992px) {
+  #liste-livres {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
