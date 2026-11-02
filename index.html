@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bibliothèque Numérique JC</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Bibliothèque Numérique JC</h1>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="#catalogue">Catalogue</a></li>
+        <li><a href="#ajout">Ajouter un livre</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="catalogue" aria-labelledby="titre-catalogue">
+     <h2 id="titre-catalogue">Catalogue</h2>
+    </section>
+
+    <section id="ajout" aria-labelledby="titre-ajout">
+           <h2 id="titre-ajout">Ajouter un livre</h2>
+      <form id="formulaire-livre">
+        <div>
+          <label for="titre">Titre</label>
+          <input type="text" id="titre" name="titre">
+        </div>
+
+        <!-- Ajoute ici : auteur, annee, categorie, disponible -->
+
+        <button type="submit">Ajouter</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bibliothèque Numérique JC</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
