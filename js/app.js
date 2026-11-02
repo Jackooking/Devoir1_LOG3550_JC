@@ -42,11 +42,14 @@ function normaliser(texte) {
 
 function filtrerLivres(livres) {
   const recherche = normaliser(document.querySelector("#recherche").value);
-
+  const categorie = document.querySelector("#filtre-categorie").value;
+  const disponiblesSeulement = document.querySelector("#filtre-disponibles").checked;
   return livres.filter(function (livre) {
     const trouveDansTitre = normaliser(livre.titre).includes(recherche);
     const trouveDansAuteur = normaliser(livre.auteur).includes(recherche);
-    return trouveDansTitre || trouveDansAuteur;
+    const correspondACategorie = categorie ? livre.categorie === categorie : true;
+    const estDisponible = disponiblesSeulement ? livre.disponible : true;
+    return (trouveDansTitre || trouveDansAuteur) && correspondACategorie && estDisponible;
   });
 }
 
@@ -56,5 +59,7 @@ function actualiserAffichage() {
 }
 
 document.querySelector("#recherche").addEventListener("input", actualiserAffichage);
+document.querySelector("#filtre-categorie").addEventListener("change", actualiserAffichage);
+document.querySelector("#filtre-disponibles").addEventListener("change", actualiserAffichage);
 
 actualiserAffichage();
