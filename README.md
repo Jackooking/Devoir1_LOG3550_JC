@@ -45,18 +45,18 @@ Les ajouts et les suppressions sont conservés après un rechargement de la page
 
 ## Difficultés rencontrées
 
-<!-- À écrire avec tes propres mots : ce qui t'a bloqué et comment tu l'as résolu. -->
+j'ai eu du mal avec les couleurs de l'entete de la page, et aussi avec les boutons.
 
 ## Réponses aux questions
 
 ### 1. Pourquoi les balises sémantiques sont-elles préférables à une suite de div ?
 
-Utiliser des balises sémantiques au lieu de tout mettre en <div>, ça change tout pour notre code. Côté accessibilité, les lecteurs d'écran s'en servent pour guider facilement les utilisateurs grâce à <nav>, <main> ou <footer>. Pour le référencement, les moteurs de recherche captent beaucoup mieux la structure et le rôle de chaque bloc. Pour la maintenance, c'est tellement plus clair et propre de lire <footer> qu'un abstrait <div class="x">. Bref, ça donne du sens à notre travail et ça rend le site beaucoup plus pro.
+Utiliser des balises sémantiques au lieu de tout mettre en <div>, ça change tout pour mon code. Côté accessibilité, les lecteurs d'écran s'en servent pour guider facilement les utilisateurs grâce à <nav>, <main> ou <footer>. Pour le référencement, les moteurs de recherche captent beaucoup mieux la structure et le rôle de chaque bloc. Pour la maintenance, c'est tellement plus clair et propre de lire <footer> qu'un abstrait <div class="x">. Bref, ça donne du sens à notre travail et ça rend le site beaucoup plus pro.
 
 ### 2. Quelle est la différence entre map, filter et forEach ? Lesquels ai-je utilisés pour la recherche et le filtrage ?
 
 D'abord, forEach, ça sert juste à parcourir les éléments un par un pour faire une action (comme les afficher), mais ça ne renvoie rien du tout. Ensuite, map, il transforme chaque élément du tableau de départ et te recrée un nouveau tableau de la même taille avec les résultats. Enfin, filter, il teste chaque élément avec une condition et te renvoie un nouveau tableau mais filtré, avec uniquement ceux qui ont validé le test.
-Du coup, pour notre code, j'ai utilisé filter pour garder uniquement les livres qui correspondent à la recherche et aux filtres, et j'ai utilisé forEach juste après pour passer sur ce nouveau tableau et afficher chaque carte de livre à l'écran.
+Du coup, pour mon code, j'ai utilisé filter pour garder uniquement les livres qui correspondent à la recherche et aux filtres, et j'ai utilisé forEach juste après pour passer sur ce nouveau tableau et afficher chaque carte de livre à l'écran.
 
 ## Captures
 
