@@ -45,13 +45,15 @@ Les ajouts et les suppressions sont conservés après un rechargement de la page
 
 ## Difficultés rencontrées
 
-j'ai eu du mal avec les couleurs de l'entete de la page, et aussi avec les boutons.
+pour les couleurs de l’en-tête : le premier gris n’avait pas assez de contraste avec le texte blanc, je l'ai vérifié avec WebAIM ;
+pour les boutons : le bouton Supprimer était collé à l’étiquette, et je l'ai espacé en CSS ;
+pour le JavaScript : du code collé au mauvais endroit, ou les parenthèses autour du || dans le filtre.
 
 ## Réponses aux questions
 
 ### 1. Pourquoi les balises sémantiques sont-elles préférables à une suite de div ?
 
-Utiliser des balises sémantiques au lieu de tout mettre en <div>, ça change tout pour mon code. Côté accessibilité, les lecteurs d'écran s'en servent pour guider facilement les utilisateurs grâce à <nav>, <main> ou <footer>. Pour le référencement, les moteurs de recherche captent beaucoup mieux la structure et le rôle de chaque bloc. Pour la maintenance, c'est tellement plus clair et propre de lire <footer> qu'un abstrait <div class="x">. Bref, ça donne du sens à notre travail et ça rend le site beaucoup plus pro.
+Utiliser des balises sémantiques au lieu de tout mettre en <div>, ça change tout pour mon code. Côté accessibilité, les lecteurs d'écran s'en servent pour guider facilement les utilisateurs grâce à <nav>, <main> ou <footer>. Pour le référencement, les moteurs de recherche captent beaucoup mieux la structure et le rôle de chaque bloc. Pour la maintenance, c'est tellement plus clair et propre de lire <footer> qu'un abstrait <div class="x">. Bref, ça donne du sens à mon travail et ça rend le site beaucoup plus pro.
 
 ### 2. Quelle est la différence entre map, filter et forEach ? Lesquels ai-je utilisés pour la recherche et le filtrage ?
 
