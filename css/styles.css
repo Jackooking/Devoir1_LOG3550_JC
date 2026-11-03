@@ -129,4 +129,9 @@ label {
   margin: 0.25rem 0 0;
   color: var(--couleur-empruntee);
 }
+
+/* Espace entre l'étiquette et le bouton Supprimer */
+#liste-livres article button {
+  display: block;
+  margin-top: var(--espace-moyen);
 }
